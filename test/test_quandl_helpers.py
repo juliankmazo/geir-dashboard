@@ -74,33 +74,132 @@ class TestQuandlHeleprs(unittest.TestCase):
     #             code = exchange.split('/')[1]
     #             self.assertEqual(code, params['code'])
 
-    def testDayVariationForCommoditie(self):
+    # def testDayVariationForCommoditie(self):
+    #     for commoditie in self.COMMODITIES:
+    #         params = QuandlHelper.get_day_variation(commoditie)
+    #         if 'error' in params:
+    #             print params['error']
+    #             self.assertEquals('No data was returned from Quandl',
+    #                               params['error'])
+    #         else:
+    #             print commoditie
+    #             print params['column_names']
+    #             print params['day_variation']
+    #             print '------'
+    #             self.assertTrue(isinstance(params['day_variation'], float))
+
+    # def testDayVariationForExchange(self):
+    #     for exchange in self.EXCHANGE_RATES:
+    #         params = QuandlHelper.get_day_variation(exchange)
+    #         if 'error' in params:
+    #             print params['error']
+    #             self.assertEquals('No data was returned from Quandl',
+    #                               params['error'])
+    #         else:
+    #             print exchange
+    #             print params['column_names']
+    #             print params['day_variation']
+    #             print '------'
+    #             self.assertTrue(isinstance(params['day_variation'], float))
+
+    # def testMonthVariationForCommoditie(self):
+    #     for commoditie in self.COMMODITIES:
+    #         params = QuandlHelper.get_month_variation(commoditie)
+    #         if 'error' in params:
+    #             print params['error']
+    #             self.assertEquals('No data was returned from Quandl',
+    #                               params['error'])
+    #         else:
+    #             print commoditie
+    #             print params['column_names']
+    #             print params['month_variation']
+    #             print '------'
+    #             self.assertTrue(isinstance(params['month_variation'], float))
+
+    # def testMonthVariationForExchange(self):
+    #     for exchange in self.EXCHANGE_RATES:
+    #         params = QuandlHelper.get_month_variation(exchange)
+    #         if 'error' in params:
+    #             print params['error']
+    #             self.assertEquals('No data was returned from Quandl',
+    #                               params['error'])
+    #         else:
+    #             print exchange
+    #             print params['column_names']
+    #             print params['month_variation']
+    #             print '------'
+    #             self.assertTrue(isinstance(params['month_variation'], float))
+
+    # def testYearVariationForCommoditie(self):
+    #     for commoditie in self.COMMODITIES:
+    #         params = QuandlHelper.get_year_variation(commoditie)
+    #         if 'error' in params:
+    #             print params['error']
+    #             self.assertEquals('No data was returned from Quandl',
+    #                               params['error'])
+    #         else:
+    #             print commoditie
+    #             print params['column_names']
+    #             print params['year_variation']
+    #             print '------'
+    #             self.assertTrue(isinstance(params['year_variation'], float))
+
+    # def testYearVariationForExchange(self):
+    #     for exchange in self.EXCHANGE_RATES:
+    #         params = QuandlHelper.get_year_variation(exchange)
+    #         if 'error' in params:
+    #             print params['error']
+    #             self.assertEquals('No data was returned from Quandl',
+    #                               params['error'])
+    #         else:
+    #             print exchange
+    #             print params['column_names']
+    #             print params['year_variation']
+    #             print '------'
+    #             self.assertTrue(isinstance(params['year_variation'], float))
+
+    def testAll(self):
+        print 'Comodities'
         for commoditie in self.COMMODITIES:
-            params = QuandlHelper.get_day_variation(commoditie)
+            params = QuandlHelper.get_basic_info(commoditie)
+            params = QuandlHelper.get_day_variation(commoditie, params)
+            params = QuandlHelper.get_month_variation(commoditie, params)
+            params = QuandlHelper.get_year_variation(commoditie, params)
             if 'error' in params:
                 print params['error']
                 self.assertEquals('No data was returned from Quandl',
                                   params['error'])
             else:
                 print commoditie
-                print params['column_names']
-                print params['day_variation']
-                print '------'
-                self.assertTrue(isinstance(params['day_variation'], float))
+                print 'Code: ', params['code']
+                print 'Name: ', params['name']
+                print 'Column Names: ', params['column_names']
+                print 'Day Variation: ', params['day_variation']
+                print 'Month Variation: ', params['month_variation']
+                print 'Year Variation: ', params['year_variation']
+                print '------------------------------------------'
+                self.assertTrue(isinstance(params['year_variation'], float))
 
-    def testDayVariationForExchange(self):
         for exchange in self.EXCHANGE_RATES:
-            params = QuandlHelper.get_day_variation(exchange)
+            params = QuandlHelper.get_basic_info(exchange)
+            params = QuandlHelper.get_day_variation(exchange, params)
+            params = QuandlHelper.get_month_variation(exchange, params)
+            params = QuandlHelper.get_year_variation(exchange, params)
             if 'error' in params:
                 print params['error']
                 self.assertEquals('No data was returned from Quandl',
                                   params['error'])
             else:
                 print exchange
-                print params['column_names']
-                print params['day_variation']
-                print '------'
-                self.assertTrue(isinstance(params['day_variation'], float))
+                print 'Code: ', params['code']
+                print 'Name: ', params['name']
+                print 'Column Names: ', params['column_names']
+                print 'Day Variation: ', params['day_variation']
+                print 'Month Variation: ', params['month_variation']
+                print 'Year Variation: ', params['year_variation']
+                print '------------------------------------------'
+                self.assertTrue(isinstance(params['year_variation'], float))
+
 
     STOCKS = ['YAHOO/INDEX_GSPC']
     COMMODITIES = ['CHRIS/ICE_T1',      # WTI Crude Oil Price
