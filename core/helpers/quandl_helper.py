@@ -45,8 +45,9 @@ class QuandlHelper(BaseHelper):
             fromDate = '&trim_start=' + cls.YESTERDAY.strftime('%Y-%m-%d')
             data = cls.get_data(code, fromDate)
             if data:
-                print data['data'][0][0], data['data'][0][1]
-                print data['data'][1][0], data['data'][1][1]
+                # print data['data'][0][0], data['data'][0][1]
+                # print data['data'][1][0], data['data'][1][1]
+                params['value'] = data['data'][0][1]
                 params['day_variation'] = float(data['data'][0][1])/float(data['data'][1][1]) - 1.0
                 params['column_names'] = data['column_names']
             else:
@@ -60,7 +61,7 @@ class QuandlHelper(BaseHelper):
             data = cls.get_data(code, fromDate)
             if data:
                 last_day = len(data['data']) - 1
-                print data['data'][last_day][0], data['data'][last_day][1]
+                # print data['data'][last_day][0], data['data'][last_day][1]
                 params['month_variation'] = float(data['data'][0][1])/float(data['data'][last_day][1]) - 1.0
                 params['column_names'] = data['column_names']
             else:
@@ -74,7 +75,7 @@ class QuandlHelper(BaseHelper):
             data = cls.get_data(code, fromDate)
             if data:
                 last_day = cls.get_valid_last_day(data)
-                print data['data'][last_day][0], data['data'][last_day][1]
+                # print data['data'][last_day][0], data['data'][last_day][1]
                 params['year_variation'] = float(data['data'][0][1])/float(data['data'][last_day][1]) - 1.0
                 params['column_names'] = data['column_names']
             else:
