@@ -1,6 +1,8 @@
 from core.controllers import BaseController
 from core.models import Commoditie
 from core.models import Exchange
+from core.models import Stock
+from core.models import InterestRate
 from core.helpers import QuandlHelper
 
 
@@ -9,6 +11,8 @@ class TaskUpdateInformationController(BaseController):
     def get(self):
         Commoditie.populate()
         Exchange.populate()
+        Stock.populate()
+        InterestRate.populate()
         commodities = Commoditie.query().fetch()
         for commoditie in commodities:
             params = QuandlHelper.get_basic_info(commoditie.code)
@@ -38,3 +42,33 @@ class TaskUpdateInformationController(BaseController):
                 exchange.updated = params['last_date']
                 exchange.value = params['value']
                 exchange.put()
+
+        stocks = Stock.query().fetch()
+        for stock in stocks:
+            params = QuandlHelper.get_basic_info(stock.code)
+            params = QuandlHelper.get_day_variation(stock.code, params)
+            params = QuandlHelper.get_month_variation(stock.code, params)
+            params = QuandlHelper.get_year_variation(stock.code, params)
+            if 'error' not in params:
+                stock.name = params['name']
+                stock.dayVariation = params['day_variation']
+                stock.monthVariation = params['month_variation']
+                stock.yearVariation = params['year_variation']
+                stock.updated = params['last_date']
+                stock.value = params['value']
+                stock.put()
+
+        interestRates = InterestRate.query().fetch()
+        for interest in interestRates:
+            params = QuandlHelper.get_basic_info(interest.code)
+            params = QuandlHelper.get_day_variation(interest.code, params)
+            params = QuandlHelper.get_month_variation(interest.code, params)
+            params = QuandlHelper.get_year_variation(interest.code, params)
+            if 'error' not in params:
+                interest.name = params['name']
+                interest.dayVariation = params['day_variation']
+                interest.monthVariation = params['month_variation']
+                interest.yearVariation = params['year_variation']
+                interest.updated = params['last_date']
+                interest.value = params['value']
+                interest.put()

@@ -29,22 +29,30 @@
 							<td>Code</td>
 							<td>Name</td>
 							<td>Last Update</td>
-							<td>Value</td>
-							<td>Day Variation</td>
-							<td>Month Variation</td>
-							<td>Year Variation</td>
+							<td class="text-right">Value</td>
+							<td class="text-right">Day Variation</td>
+							<td class="text-right">Month Variation</td>
+							<td class="text-right">Year Variation</td>
 						</thead>
 
 						<tbody>
 							{% for stock in stocks %}
 								<tr>
 									<td>{{stock.code}}</td>
-									<td>{{stock.name}}</td>
+									<td>
+									{% if stock.name %}{{stock.name|truncate(40)}}{% endif %}
+									</td>
 									<td>{{stock.updated}}</td>
 									<td class="text-right">{{stock.value|currency}}</td>
-									<td class="text-right">{{stock.dayVariation|percentage}}</td>
-									<td class="text-right">{{stock.monthVariation|percentage}}</td>
-									<td class="text-right">{{stock.yearVariation|percentage}}</td>
+									<td class="text-right {% if stock.dayVariation > 0 %}text-success{% elif stock.dayVariation == 0 %}{% else %} text-danger {% endif %}">
+									{{stock.dayVariation|percentage}}
+									</td>
+									<td class="text-right {% if stock.monthVariation > 0 %}text-success{% elif stock.monthVariation == 0 %}{% else %} text-danger {% endif %}">
+									{{stock.monthVariation|percentage}}
+									</td>
+									<td class="text-right {% if stock.yearVariation > 0 %}text-success{% elif stock.yearVariation == 0 %}{% else %} text-danger {% endif %}">
+									{{stock.yearVariation|percentage}}
+									</td>
 								</tr>
 							{% endfor %}
 						</tbody>
@@ -57,22 +65,30 @@
 							<td>Code</td>
 							<td>Name</td>
 							<td>Last Update</td>
-							<td>Value</td>
-							<td>Day Variation</td>
-							<td>Month Variation</td>
-							<td>Year Variation</td>
+							<td class="text-right">Value</td>
+							<td class="text-right">Day Variation</td>
+							<td class="text-right">Month Variation</td>
+							<td class="text-right">Year Variation</td>
 						</thead>
 
 						<tbody>
 							{% for commoditie in commodities %}
 								<tr>
 									<td>{{commoditie.code}}</td>
-									<td>{{commoditie.name}}</td>
+									<td>
+									{% if commoditie.name %}{{commoditie.name|truncate(40)}}{% endif %}
+									</td>
 									<td>{{commoditie.updated}}</td>
 									<td class="text-right">{{commoditie.value|currency}}</td>
-									<td class="text-right">{{commoditie.dayVariation|percentage}}</td>
-									<td class="text-right">{{commoditie.monthVariation|percentage}}</td>
-									<td class="text-right">{{commoditie.yearVariation|percentage}}</td>
+									<td class="text-right {% if commoditie.dayVariation > 0 %}text-success{% elif commoditie.dayVariation == 0 %}{% else %} text-danger {% endif %}">
+									{{commoditie.dayVariation|percentage}}
+									</td>
+									<td class="text-right {% if commoditie.monthVariation > 0 %}text-success{% elif commoditie.monthVariation == 0 %}{% else %} text-danger {% endif %}">
+									{{commoditie.monthVariation|percentage}}
+									</td>
+									<td class="text-right {% if commoditie.yearVariation > 0 %}text-success{% elif commoditie.yearVariation == 0 %}{% else %} text-danger {% endif %}">
+									{{commoditie.yearVariation|percentage}}
+									</td>
 								</tr>
 							{% endfor %}
 						</tbody>
@@ -85,22 +101,30 @@
 							<td>Code</td>
 							<td>Name</td>
 							<td>Last Update</td>
-							<td>Value</td>
-							<td>Day Variation</td>
-							<td>Month Variation</td>
-							<td>Year Variation</td>
+							<td class="text-right">Value</td>
+							<td class="text-right">Day Variation</td>
+							<td class="text-right">Month Variation</td>
+							<td class="text-right">Year Variation</td>
 						</thead>
 
 						<tbody>
 							{% for exchange in exchanges %}
 								<tr>
 									<td>{{exchange.code}}</td>
-									<td>{{exchange.name}}</td>
+									<td>
+									{% if exchange.name %}{{exchange.name|truncate(40)}}{% endif %}
+									</td>
 									<td>{{exchange.updated}}</td>
 									<td class="text-right">{{exchange.value|currency}}</td>
-									<td class="text-right">{{exchange.dayVariation|percentage}}</td>
-									<td class="text-right">{{exchange.monthVariation|percentage}}</td>
-									<td class="text-right">{{exchange.yearVariation|percentage}}</td>
+									<td class="text-right {% if exchange.dayVariation > 0 %}text-success{% elif exchange.dayVariation == 0 %}{% else %} text-danger {% endif %}">
+									{{exchange.dayVariation|percentage}}
+									</td>
+									<td class="text-right {% if exchange.monthVariation > 0 %}text-success{% elif exchange.monthVariation == 0 %}{% else %} text-danger {% endif %}">
+									{{exchange.monthVariation|percentage}}
+									</td>
+									<td class="text-right {% if exchange.yearVariation > 0 %}text-success{% elif exchange.yearVariation == 0 %}{% else %} text-danger {% endif %}">
+									{{exchange.yearVariation|percentage}}
+									</td>
 								</tr>
 							{% endfor %}
 						</tbody>
@@ -113,22 +137,30 @@
 							<td>Code</td>
 							<td>Name</td>
 							<td>Last Update</td>
-							<td>Value</td>
-							<td>Day Variation</td>
-							<td>Month Variation</td>
-							<td>Year Variation</td>
+							<td class="text-right">Value</td>
+							<td class="text-right">Day Variation</td>
+							<td class="text-right">Month Variation</td>
+							<td class="text-right">Year Variation</td>
 						</thead>
 
 						<tbody>
 							{% for interest in interests %}
 								<tr>
 									<td>{{interest.code}}</td>
-									<td>{{interest.name}}</td>
+									<td>
+									{% if interest.name %}{{interest.name|truncate(40)}}{% endif %}
+									</td>
 									<td>{{interest.updated}}</td>
-									<td class="text-right">{{interest.value|currency}}</td>
-									<td class="text-right">{{interest.dayVariation|percentage}}</td>
-									<td class="text-right">{{interest.monthVariation|percentage}}</td>
-									<td class="text-right">{{interest.yearVariation|percentage}}</td>
+									<td class="text-right">{{interest.value}}</td>
+									<td class="text-right {% if interest.dayVariation > 0 %}text-success{% elif interest.dayVariation == 0 %}{% else %} text-danger {% endif %}">
+									{{interest.dayVariation|percentage}}
+									</td>
+									<td class="text-right {% if interest.monthVariation > 0 %}text-success{% elif interest.monthVariation == 0 %}{% else %} text-danger {% endif %}">
+									{{interest.monthVariation|percentage}}
+									</td>
+									<td class="text-right {% if interest.yearVariation > 0 %}text-success{% elif interest.yearVariation == 0 %}{% else %} text-danger {% endif %}">
+									{{interest.yearVariation|percentage}}
+									</td>
 								</tr>
 							{% endfor %}
 						</tbody>
