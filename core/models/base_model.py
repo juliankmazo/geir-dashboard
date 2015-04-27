@@ -2,6 +2,8 @@ from google.appengine.ext import ndb
 
 
 class BaseModel(ndb.Model):
+    # We extend all the models from this one because they all
+    # have the same structure
     name = ndb.StringProperty()
     code = ndb.StringProperty()
     column = ndb.IntegerProperty()

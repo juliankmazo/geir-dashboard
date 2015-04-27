@@ -6,7 +6,8 @@ from core.models import InterestRate
 
 
 class MainPageController(BaseController):
-
+    # Main page controller. We get all the objects in the database
+    # and then we render all in the mainpage template
     def get(self):
         commodities = Commoditie.query().order(Commoditie.code).fetch()
         exchanges = Exchange.query().order(Exchange.code).fetch()

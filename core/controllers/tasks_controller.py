@@ -7,7 +7,8 @@ from core.helpers import QuandlHelper
 
 
 class TaskUpdateInformationController(BaseController):
-
+    # This controller is in charge of populating, getting the info
+    # from quandl and saving it in the datastore
     def get(self):
         Commoditie.populate()
         Exchange.populate()

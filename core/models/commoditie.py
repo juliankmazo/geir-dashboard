@@ -2,7 +2,9 @@ from core.models import BaseModel
 
 
 class Commoditie(BaseModel):
-
+    # Commoditie model. The classmethod populate
+    # take the list COMMODITIES and if it is not in 
+    # the database, it'll put it.
     @classmethod
     def populate(cls):
         for c in cls.COMMODITIES:

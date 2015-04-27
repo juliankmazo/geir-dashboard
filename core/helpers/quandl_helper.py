@@ -5,6 +5,7 @@ import datetime
 
 
 class QuandlHelper(BaseHelper):
+    # This is the class in charge of fetching all the info from quandl
     NAME_EXTENSION = '.json?auth_token=iZKVyFSQgRbD18CcEjJC'
     URL = 'http://www.quandl.com/api/v1/datasets/'
     TODAY = datetime.datetime.now()

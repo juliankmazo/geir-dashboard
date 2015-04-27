@@ -1,6 +1,6 @@
 
 class BaseHelper():
-
+    # This are some function used for the templates
     @classmethod
     def float2percentage(cls, number):
         if not number:
