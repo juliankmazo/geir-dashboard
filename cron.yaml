@@ -1,4 +1,4 @@
 cron:
 - description: Update all the informatio
   url: /tasks/update-info
-  schedule: every 60 minutes synchronized
+  schedule: every 120 minutes synchronized
