@@ -38,7 +38,7 @@
 						<tbody>
 							{% for stock in stocks %}
 								<tr>
-									<td>{{stock.code}}</td>
+									<td><a href="https://www.quandl.com/data/{{stock.code}}" target="_blank">{{stock.code}}</a></td>
 									<td>
 									{% if stock.name %}{{stock.name|truncate(40)}}{% endif %}
 									</td>
@@ -74,7 +74,7 @@
 						<tbody>
 							{% for commoditie in commodities %}
 								<tr>
-									<td>{{commoditie.code}}</td>
+									<td><a href="https://www.quandl.com/data/{{commoditie.code}}" target="_blank">{{commoditie.code}}</a></td>
 									<td>
 									{% if commoditie.name %}{{commoditie.name|truncate(40)}}{% endif %}
 									</td>
@@ -110,7 +110,7 @@
 						<tbody>
 							{% for exchange in exchanges %}
 								<tr>
-									<td>{{exchange.code}}</td>
+									<td><a href="https://www.quandl.com/data/{{exchange.code}}" target="_blank">{{exchange.code}}</a></td>
 									<td>
 									{% if exchange.name %}{{exchange.name|truncate(40)}}{% endif %}
 									</td>
@@ -146,7 +146,7 @@
 						<tbody>
 							{% for interest in interests %}
 								<tr>
-									<td>{{interest.code}}</td>
+									<td><a href="https://www.quandl.com/data/{{interest.code}}" target="_blank">{{interest.code}}</a></td>
 									<td>
 									{% if interest.name %}{{interest.name|truncate(40)}}{% endif %}
 									</td>
