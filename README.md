@@ -1,4 +1,4 @@
-# geir-dashboard
+# Geir-dashboard
 
 This is a Google Appengine Python powered dashboard with JSON API from Quandl
 
@@ -21,7 +21,7 @@ and save it in the ndb datastore. This procces is all made when making a request
 This procces is made every 120 minutes. You can change this cron job in the `cron.yaml` file.
 ### Viewing the information
 When the user make a request to `/`, the application query all the information about the objects to the ndb database
-and it render it with Jinja2 in the dashboard.
+and it'll render it with Jinja2 in the dashboard.
 
 ## Structure
 ```
@@ -57,3 +57,9 @@ We have here all our assets(Javascript, CSS, ...) and dependencies. We are using
 
 ### Tests
 We define here our unit test. We start the application doing TDD with the Quandl Helper because is the main code of the entire app. Here we query the information that we need for every object.
+
+### Other files
+```
+run_gae_tests.py
+```
+You can run all the test contained in `/tests` from the console with `python run_gae_tests.py ~/ test/`
