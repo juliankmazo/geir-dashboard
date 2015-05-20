@@ -7,7 +7,7 @@ import datetime
 class QuandlHelper(BaseHelper):
     # This is the class in charge of fetching all the info from quandl
     NAME_EXTENSION = '.json?auth_token=iZKVyFSQgRbD18CcEjJC'
-    URL = 'http://www.quandl.com/api/v1/datasets/'
+    URL = 'https://www.quandl.com/api/v1/datasets/'
     TODAY = datetime.datetime.now()
     YESTERDAY = TODAY + datetime.timedelta(days=-10)
     MONTH_AGO = TODAY + datetime.timedelta(days=-30)
@@ -49,7 +49,10 @@ class QuandlHelper(BaseHelper):
                 # print data['data'][0][0], data['data'][0][1]
                 # print data['data'][1][0], data['data'][1][1]
                 params['value'] = data['data'][0][1]
-                params['day_variation'] = float(data['data'][0][1])/float(data['data'][1][1]) - 1.0
+                try:
+                    params['day_variation'] = float(data['data'][0][1])/float(data['data'][1][1]) - 1.0
+                except ZeroDivisionError:
+                    params['day_variation'] = None
                 params['column_names'] = data['column_names']
             else:
                 params['error'] = 'No data was returned from Quandl'
@@ -63,7 +66,10 @@ class QuandlHelper(BaseHelper):
             if data:
                 last_day = len(data['data']) - 1
                 # print data['data'][last_day][0], data['data'][last_day][1]
-                params['month_variation'] = float(data['data'][0][1])/float(data['data'][last_day][1]) - 1.0
+                try:
+                    params['month_variation'] = float(data['data'][0][1])/float(data['data'][last_day][1]) - 1.0
+                except ZeroDivisionError:
+                    params['month_variation'] = None
                 params['column_names'] = data['column_names']
             else:
                 params['error'] = 'No data was returned from Quandl'
@@ -77,7 +83,10 @@ class QuandlHelper(BaseHelper):
             if data:
                 last_day = cls.get_valid_last_day(data)
                 # print data['data'][last_day][0], data['data'][last_day][1]
-                params['year_variation'] = float(data['data'][0][1])/float(data['data'][last_day][1]) - 1.0
+                try:
+                    params['year_variation'] = float(data['data'][0][1])/float(data['data'][last_day][1]) - 1.0
+                except ZeroDivisionError:
+                    params['year_variation'] = None
                 params['column_names'] = data['column_names']
             else:
                 params['error'] = 'No data was returned from Quandl'
