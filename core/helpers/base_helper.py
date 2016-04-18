@@ -3,9 +3,7 @@ class BaseHelper():
     # This are some function used for the templates
     @classmethod
     def float2percentage(cls, number):
-        if not number:
-            number = 0
-        return "{0:.2f}%".format(number*100)
+        return "{0:.2%}".format(number or 0)
 
     @classmethod
     def format_currency(cls, value):
